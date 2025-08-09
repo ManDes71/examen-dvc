@@ -1,0 +1,6 @@
+dvc
+pandas
+numpy 
+pathlib 
+scikit-learn
+joblib
