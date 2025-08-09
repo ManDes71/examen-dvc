@@ -20,4 +20,13 @@ stages:
     - data/processed_data
     - src/models/grid_search.py
     outs:
-    - models
+    - models/params
+  training:
+    cmd: python src/models/training.py
+    deps:
+    - data/processed
+    - data/processed_data
+    - models/params
+    - src/models/training.py
+    outs:
+    - models/models
