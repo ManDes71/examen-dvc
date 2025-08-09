@@ -6,3 +6,18 @@ stages:
     - src/features/data_split.py
     outs:
     - data/processed_data
+  normalize:
+    cmd: python src/features/normalize.py
+    deps:
+    - data/processed_data
+    - src/features/normalize.py
+    outs:
+    - data/processed
+  gridsearch:
+    cmd: python src/models/grid_search.py
+    deps:
+    - data/processed
+    - data/processed_data
+    - src/models/grid_search.py
+    outs:
+    - models

@@ -18,3 +18,44 @@ stages:
       md5: 9fbb92b81f3ca2e5f7cd1e10d61b123d.dir
       size: 316840
       nfiles: 4
+  normalize:
+    cmd: python src/features/normalize.py
+    deps:
+    - path: data/processed_data
+      hash: md5
+      md5: 9fbb92b81f3ca2e5f7cd1e10d61b123d.dir
+      size: 316840
+      nfiles: 4
+    - path: src/features/normalize.py
+      hash: md5
+      md5: 35e02181c6dc60d6a0b7c815324a9cb9
+      size: 2358
+    outs:
+    - path: data/processed
+      hash: md5
+      md5: bef05b3e876c194f811953572ebc5431.dir
+      size: 306864
+      nfiles: 2
+  gridsearch:
+    cmd: python src/models/grid_search.py
+    deps:
+    - path: data/processed
+      hash: md5
+      md5: bef05b3e876c194f811953572ebc5431.dir
+      size: 306864
+      nfiles: 2
+    - path: data/processed_data
+      hash: md5
+      md5: 9fbb92b81f3ca2e5f7cd1e10d61b123d.dir
+      size: 316840
+      nfiles: 4
+    - path: src/models/grid_search.py
+      hash: md5
+      md5: 1c00cb8c736af946e1b741e6a8f7d499
+      size: 1376
+    outs:
+    - path: models
+      hash: md5
+      md5: 6c989e51d622454b874a499d2cc5a3ea.dir
+      size: 112
+      nfiles: 1
