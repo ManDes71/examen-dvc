@@ -1,0 +1,8 @@
+stages:
+  split:
+    cmd: python src/features/data_split.py
+    deps:
+    - data/raw_data
+    - src/features/data_split.py
+    outs:
+    - data/processed_data
