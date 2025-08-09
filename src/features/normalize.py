@@ -52,5 +52,5 @@ def normalize_data(input_dir, output_dir):
 
 if __name__ == "__main__":
     input_dir = "data/processed_data"
-    output_dir = "data/processed_data"
+    output_dir = "data/processed"
     normalize_data(input_dir, output_dir)

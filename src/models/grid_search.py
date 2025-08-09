@@ -7,7 +7,7 @@ import os
 
 def grid_search_train(input_dir, output_dir):
     # Load scaled train data
-    X_train = pd.read_csv(os.path.join(input_dir, 'X_train_scaled.csv'))
+    X_train = pd.read_csv(os.path.join(input_scaled_dir, 'X_train_scaled.csv'))
     y_train = pd.read_csv(os.path.join(input_dir, 'y_train.csv')).squeeze()
     # Remove date column if present
     if 'date' in X_train.columns or X_train.columns[0].lower().startswith('date'):
@@ -19,7 +19,7 @@ def grid_search_train(input_dir, output_dir):
     'max_depth': [None,  20, 30],
     'min_samples_split': [2, 5],
     'min_samples_leaf': [1, 2 ],
-    'max_features': ['auto', 'sqrt']
+    'max_features': ['log2', 'sqrt']
     }
     grid_search = GridSearchCV(model,  param_grid, cv=3, n_jobs=-1, scoring='neg_mean_squared_error')
     grid_search.fit(X_train, y_train)
@@ -30,5 +30,6 @@ def grid_search_train(input_dir, output_dir):
 
 if __name__ == "__main__":
     input_dir = "data/processed_data"
+    input_scaled_dir = "data/processed"
     output_dir = "models"
     grid_search_train(input_dir, output_dir)
