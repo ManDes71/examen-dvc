@@ -24,6 +24,6 @@ def train_and_save_model(input_dir, params_path, output_dir):
 if __name__ == "__main__":
     input_dir = "data/processed_data"
     input_scaled_dir = "data/processed"
-    params_path = "models/best_params.pkl"
-    output_dir = "models"
+    params_path = "models/params/best_params.pkl"
+    output_dir = "models/models"
     train_and_save_model(input_dir, params_path, output_dir)

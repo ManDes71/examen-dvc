@@ -5,3 +5,4 @@ pathlib
 scikit-learn
 joblib
 dvc-gdrive
+yaml
