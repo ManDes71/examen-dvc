@@ -5,14 +5,18 @@ stages:
     - data/raw_data
     - src/features/data_split.py
     outs:
-    - data/processed_data
+    - data/processed_data/X_test.csv
+    - data/processed_data/X_train.csv
+    - data/processed_data/y_test.csv
+    - data/processed_data/y_train.csv
   normalize:
     cmd: python src/features/normalize.py
     deps:
     - data/processed_data
     - src/features/normalize.py
     outs:
-    - data/processed
+    - data/processed/X_train_scaled.csv
+    - data/processed/X_test_scaled.csv
   gridsearch:
     cmd: python src/models/grid_search.py
     deps:
@@ -20,7 +24,7 @@ stages:
     - data/processed_data
     - src/models/grid_search.py
     outs:
-    - models/params
+    - models/params/best_params.pkl
   training:
     cmd: python src/models/training.py
     deps:
@@ -29,7 +33,7 @@ stages:
     - models/params
     - src/models/training.py
     outs:
-    - models/models
+    - models/models/trained_model.pkl
 
   evaluate:
     cmd: python src/models/evaluate.py
@@ -39,5 +43,5 @@ stages:
     - models/models
     - src/models/evaluate.py
     outs:
-    - data/predictions
-    - metrics
+    - data/predictions/predictions.csv
+    - metrics/scores.json

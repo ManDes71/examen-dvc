@@ -13,11 +13,22 @@ stages:
       md5: 93d484a88073dca62133da48f730cca9
       size: 1219
     outs:
-    - path: data/processed_data
+    - path: data/processed_data/X_test.csv
       hash: md5
-      md5: 9fbb92b81f3ca2e5f7cd1e10d61b123d.dir
-      size: 316840
-      nfiles: 4
+      md5: 40163569dbdd083d938294df0ae2cf6a
+      size: 57111
+    - path: data/processed_data/X_train.csv
+      hash: md5
+      md5: 189853da31d4a15fa7b51e0644b14354
+      size: 227322
+    - path: data/processed_data/y_test.csv
+      hash: md5
+      md5: a051d29629c8bbb4cfb7e85c7f0315da
+      size: 6456
+    - path: data/processed_data/y_train.csv
+      hash: md5
+      md5: a9cd9d91da89f732843d72548f64ded3
+      size: 25951
   normalize:
     cmd: python src/features/normalize.py
     deps:
@@ -31,11 +42,14 @@ stages:
       md5: 35e02181c6dc60d6a0b7c815324a9cb9
       size: 2358
     outs:
-    - path: data/processed
+    - path: data/processed/X_test_scaled.csv
       hash: md5
-      md5: bef05b3e876c194f811953572ebc5431.dir
-      size: 306864
-      nfiles: 2
+      md5: 97e9c0e7141cd942013e20b6e6595c6a
+      size: 61513
+    - path: data/processed/X_train_scaled.csv
+      hash: md5
+      md5: 3188b5a886705b77869a6c6551b13594
+      size: 245351
   gridsearch:
     cmd: python src/models/grid_search.py
     deps:
@@ -54,11 +68,10 @@ stages:
       md5: 37c491770f6ad6f6aebaf9dc9f949074
       size: 1383
     outs:
-    - path: models/params
+    - path: models/params/best_params.pkl
       hash: md5
-      md5: 6c989e51d622454b874a499d2cc5a3ea.dir
+      md5: 15efd0fa1f0a7bd2bd27f434c87ac765
       size: 112
-      nfiles: 1
   training:
     cmd: python src/models/training.py
     deps:
@@ -82,11 +95,10 @@ stages:
       md5: 2c4439449e5e48e0d0d726a2634f23dd
       size: 1185
     outs:
-    - path: models/models
+    - path: models/models/trained_model.pkl
       hash: md5
-      md5: 8f34d2facbbf39b0f329376c8c26ffcf.dir
+      md5: 99b15297189c98e2fa920f420453e05e
       size: 78560593
-      nfiles: 1
   evaluate:
     cmd: python src/models/evaluate.py
     deps:
@@ -110,13 +122,11 @@ stages:
       md5: 6e9c5e82e68a8f256a45abed57bcd09a
       size: 2051
     outs:
-    - path: data/predictions
+    - path: data/predictions/predictions.csv
       hash: md5
-      md5: 2dd44a697f23b2a2e6f6e902e9d402c2.dir
+      md5: 8ab4f20fd3ac7e000500bc47fefc2549
       size: 14078
-      nfiles: 1
-    - path: metrics
+    - path: metrics/scores.json
       hash: md5
-      md5: 91e52ab6b5d43c51b2ddba425c5b4f06.dir
+      md5: f9a59bcb52d8ae865b0afefe90e1db06
       size: 52
-      nfiles: 1
