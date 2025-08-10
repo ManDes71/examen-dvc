@@ -2,7 +2,7 @@ stages:
   split:
     cmd: python src/features/data_split.py
     deps:
-    - data/raw_data
+    - data/raw_data/raw.csv
     - src/features/data_split.py
     outs:
     - data/processed_data/X_test.csv
