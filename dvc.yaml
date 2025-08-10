@@ -30,7 +30,7 @@ stages:
     deps:
     - data/processed
     - data/processed_data
-    - models/params
+    - models/params/best_params.pkl
     - src/models/training.py
     outs:
     - models/models/trained_model.pkl
@@ -40,8 +40,10 @@ stages:
     deps:
     - data/processed
     - data/processed_data
-    - models/models
+    - models/models/trained_model.pkl
     - src/models/evaluate.py
     outs:
     - data/predictions/predictions.csv
-    - metrics/scores.json
+    metrics:
+    - metrics/scores.json:
+        cache: false
