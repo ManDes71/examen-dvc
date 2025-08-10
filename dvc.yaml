@@ -4,6 +4,7 @@ stages:
     deps:
       - data/raw_data/raw.csv
       - src/features/data_split.py
+      - params.yaml
     params:
       - split.test_size
       - split.random_state
@@ -27,6 +28,7 @@ stages:
       - data/processed/X_train_scaled.csv
       - data/processed_data/y_train.csv
       - src/models/grid_search.py
+      - params.yaml
     params:
       - model.n_estimators
       - model.max_depth 
