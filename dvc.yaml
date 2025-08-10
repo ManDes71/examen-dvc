@@ -30,3 +30,14 @@ stages:
     - src/models/training.py
     outs:
     - models/models
+
+  evaluate:
+    cmd: python src/models/evaluate.py
+    deps:
+    - data/processed
+    - data/processed_data
+    - models/models
+    - src/models/evaluate.py
+    outs:
+    - data/predictions
+    - metrics
