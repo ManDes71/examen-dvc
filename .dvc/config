@@ -1,4 +1,6 @@
 [core]
-    remote = gdrv
+    remote = origin
 ['remote "gdrv"']
     url = gdrive://1zYKaetyt4DwgrTfJtEVj0KbM0xyhLyls
+['remote "origin"']
+    url = https://dagshub.com/ManDes71/examen-dvc.dvc
